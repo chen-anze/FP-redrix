@@ -1,0 +1,6 @@
+# Generated source/build trees and local diagnostic reports.
+build/
+libfprint/
+diagnostics-*.txt
+*.log
+

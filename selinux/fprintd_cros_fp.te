@@ -1,0 +1,14 @@
+module fprintd_cros_fp 1.0;
+
+require {
+	type fprintd_t;
+	attribute device_node;
+	class chr_file { getattr ioctl open read write };
+}
+
+# Give the ChromeOS fingerprint MCU a dedicated label. Using device_t here would
+# grant fprintd access to unrelated generic character devices.
+type cros_fp_device_t;
+typeattribute cros_fp_device_t device_node;
+
+allow fprintd_t cros_fp_device_t:chr_file { getattr ioctl open read write };
